@@ -4,20 +4,45 @@
     <Filter Include="Lilith">
       <UniqueIdentifier>{6B28D0C0-57CA-FA96-4085-0EEB2CC681E7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lilith\Events">
+      <UniqueIdentifier>{EFCD0C8B-5B8E-88C1-24C9-D13E9048CD9D}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Lilith.h" />
-    <ClInclude Include="src\Lilith\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Lilith\Events\Event.h" />
-    <ClInclude Include="src\Lilith\Events\KeyEvent.h" />
-    <ClInclude Include="src\Lilith\Events\MouseEvent.h" />
-    <ClInclude Include="src\Lilith\Application.h" />
-    <ClInclude Include="src\Lilith\Core.h" />
-    <ClInclude Include="src\Lilith\EntryPoint.h" />
-    <ClInclude Include="src\Lilith\Log.h" />
+    <ClInclude Include="src\Lilith\Application.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Core.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\EntryPoint.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Events\ApplicationEvent.h">
+      <Filter>Lilith\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Events\Event.h">
+      <Filter>Lilith\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Events\KeyEvent.h">
+      <Filter>Lilith\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Events\MouseEvent.h">
+      <Filter>Lilith\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Log.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lipch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Lilith\Application.cpp" />
-    <ClCompile Include="src\Lilith\Log.cpp" />
+    <ClCompile Include="src\Lilith\Application.cpp">
+      <Filter>Lilith</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lilith\Log.cpp">
+      <Filter>Lilith</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lipch.cpp" />
   </ItemGroup>
 </Project>

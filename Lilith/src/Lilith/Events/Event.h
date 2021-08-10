@@ -1,9 +1,6 @@
 #pragma once
-
+#include "lipch.h"
 #include "Lilith\Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Lilith {
 

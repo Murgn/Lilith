@@ -18,6 +18,9 @@ project "Lilith"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "lipch.h"
+	pchsource "Lilith/src/lipch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

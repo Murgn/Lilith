@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Lilith {
 
 	class LILITH_API KeyEvent : public Event

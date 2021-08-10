@@ -1,3 +1,4 @@
+#include "lipch.h"
 #include "Application.h"
 
 #include "Lilith/Events/ApplicationEvent.h"
