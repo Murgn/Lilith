@@ -7,25 +7,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Lilith.h" />
-    <ClInclude Include="src\Lilith\Application.h">
-      <Filter>Lilith</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lilith\Core.h">
-      <Filter>Lilith</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lilith\EntryPoint.h">
-      <Filter>Lilith</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lilith\Log.h">
-      <Filter>Lilith</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Lilith\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Lilith\Events\Event.h" />
+    <ClInclude Include="src\Lilith\Events\KeyEvent.h" />
+    <ClInclude Include="src\Lilith\Events\MouseEvent.h" />
+    <ClInclude Include="src\Lilith\Application.h" />
+    <ClInclude Include="src\Lilith\Core.h" />
+    <ClInclude Include="src\Lilith\EntryPoint.h" />
+    <ClInclude Include="src\Lilith\Log.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Lilith\Application.cpp">
-      <Filter>Lilith</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Lilith\Log.cpp">
-      <Filter>Lilith</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Lilith\Application.cpp" />
+    <ClCompile Include="src\Lilith\Log.cpp" />
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Lilith {
 
@@ -28,7 +29,6 @@ namespace Lilith {
 #define LI_CORE_ERROR(...)		::Lilith::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define LI_CORE_CRITICAL(...)	::Lilith::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
-// Client log macros
 #define LI_TRACE(...)			::Lilith::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define LI_INFO(...)			::Lilith::Log::GetClientLogger()->info(__VA_ARGS__)
 #define LI_WARN(...)			::Lilith::Log::GetClientLogger()->warn(__VA_ARGS__)
