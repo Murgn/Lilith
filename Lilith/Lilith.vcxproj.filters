@@ -37,6 +37,12 @@
     <ClInclude Include="src\Lilith\Events\MouseEvent.h">
       <Filter>Lilith\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lilith\Layer.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\LayerStack.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lilith\Log.h">
       <Filter>Lilith</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Application.cpp">
+      <Filter>Lilith</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lilith\Layer.cpp">
+      <Filter>Lilith</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lilith\LayerStack.cpp">
       <Filter>Lilith</Filter>
     </ClCompile>
     <ClCompile Include="src\Lilith\Log.cpp">
