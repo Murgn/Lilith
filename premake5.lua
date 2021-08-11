@@ -13,7 +13,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Lilith/vendor/GLFW/include"
+IncludeDir["Glad"] = "Lilith/vendor/Glad/include"
 include "Lilith/vendor/GLFW"
+include "Lilith/vendor/Glad"
 
 project "Lilith"
 	location "Lilith"
@@ -36,12 +38,14 @@ project "Lilith"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -53,7 +57,8 @@ project "Lilith"
 		defines
 		{
 			"LI_PLATFORM_WINDOWS",
-			"LI_BUILD_DLL"
+			"LI_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
