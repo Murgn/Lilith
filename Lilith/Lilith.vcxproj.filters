@@ -7,6 +7,12 @@
     <Filter Include="Lilith\Events">
       <UniqueIdentifier>{EFCD0C8B-5B8E-88C1-24C9-D13E9048CD9D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Lilith.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Lilith\Log.h">
       <Filter>Lilith</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lilith\Window.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\lipch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Lilith\Log.cpp">
       <Filter>Lilith</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\lipch.cpp" />
   </ItemGroup>

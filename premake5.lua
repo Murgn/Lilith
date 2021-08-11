@@ -10,6 +10,11 @@ workspace "Lilith"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Lilith/vendor/GLFW/include"
+include "Lilith/vendor/GLFW"
+
 project "Lilith"
 	location "Lilith"
 	kind "SharedLib"
@@ -30,7 +35,14 @@ project "Lilith"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

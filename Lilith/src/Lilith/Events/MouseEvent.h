@@ -46,4 +46,49 @@ namespace Lilith {
 	private:
 		float m_XOffset, m_YOffset;
 	};
+
+	class LILITH_API MouseButtonEvent : public Event
+	{
+	public:
+		inline int GetMouseButton() const { return m_Button; }
+
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+	protected:
+		MouseButtonEvent(int button)
+			: m_Button(button) {}
+
+		int m_Button;
+	};
+
+	class LILITH_API MouseButtonPressedEvent : public MouseButtonEvent
+	{
+	public:
+		MouseButtonPressedEvent(int button)
+			: MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonPressedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonPressed)
+	};
+
+	class LILITH_API MouseButtonReleasedEvent : public MouseButtonEvent
+	{
+	public:
+		MouseButtonReleasedEvent(int button)
+			: MouseButtonEvent(button) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "MouseButtonReleasedEvent: " << m_Button;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(MouseButtonReleased)
+	};
 }
