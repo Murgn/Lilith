@@ -1,5 +1,6 @@
 workspace "Lilith"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -15,14 +16,19 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Lilith/vendor/GLFW/include"
 IncludeDir["Glad"] = "Lilith/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lilith/vendor/ImGui"
-include "Lilith/vendor/GLFW"
-include "Lilith/vendor/Glad"
-include "Lilith/vendor/ImGui"
+
+group "Dependencies"
+	include "Lilith/vendor/GLFW"
+	include "Lilith/vendor/Glad"
+	include "Lilith/vendor/ImGui"
+
+group ""
 
 project "Lilith"
 	location "Lilith"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +61,6 @@ project "Lilith"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -67,25 +72,29 @@ project "Lilith"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
-	filter "configurations.Debug"
+	filter "configurations:Debug"
 		defines "LI_DEBUG"
+		runtime "Debug"
 		symbols "On"
 
-	filter "configurations.Release"
+	filter "configurations:Release"
 		defines "LI_RELEASE"
+		runtime "Release"
 		optimize "On"
 
-	filter "configurations.Dist"
+	filter "configurations:Dist"
 		defines "LI_DIST"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,7 +118,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -117,14 +125,14 @@ project "Sandbox"
 			"LI_PLATFORM_WINDOWS"
 		}
 
-	filter "configurations.Debug"
-		defines "LI_DEBUG"
+	filter "configurations:Debug"
+		runtime "Debug"
 		symbols "On"
 
-	filter "configurations.Release"
-		defines "LI_RELEASE"
+	filter "configurations:Release"
+		runtime "Release"
 		optimize "On"
 
-	filter "configurations.Dist"
-		defines "LI_DIST"
+	filter "configurations:Dist"
+		runtime "Release"
 		optimize "On"
