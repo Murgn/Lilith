@@ -1,5 +1,7 @@
 #include <Lilith.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Lilith::Layer
 {
 public:
@@ -14,6 +16,13 @@ public:
 			LI_TRACE("YABA DABA DOOOOOO");
 	}
 
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Murgn Land");
+		ImGui::Text("yo stupid\n no im not\n whats 9+10\n21");
+		ImGui::End();
+	}
+
 	void OnEvent(Lilith::Event& event) override
 	{
 		//LI_TRACE("{0}", event);
@@ -26,7 +35,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Lilith::ImGuiLayer());
 	}
 
 	~Sandbox()

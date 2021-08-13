@@ -111,6 +111,7 @@ project "Sandbox"
 	{
 		"Lilith/vendor/spdlog/include",
 		"Lilith/src",
+		"Lilith/vendor",
 		"%{IncludeDir.glm}"
 	}
 

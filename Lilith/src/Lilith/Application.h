@@ -7,6 +7,8 @@
 #include "Lilith/Events/Event.h"
 #include "Lilith/Events/ApplicationEvent.h"
 
+#include "Lilith/ImGui//ImGuiLayer.h"
+
 namespace Lilith {
 
 	class LILITH_API Application
@@ -29,6 +31,7 @@ namespace Lilith {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
