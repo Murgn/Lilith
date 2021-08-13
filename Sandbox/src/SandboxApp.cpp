@@ -10,12 +10,13 @@ public:
 
 	void OnUpdate() override
 	{
-		LI_INFO("ExampleLayer::Update");
+		if (Lilith::Input::IsKeyPressed(LI_KEY_A))
+			LI_TRACE("YABA DABA DOOOOOO");
 	}
 
 	void OnEvent(Lilith::Event& event) override
 	{
-		LI_TRACE("{0}", event);
+		//LI_TRACE("{0}", event);
 	}
 };
 
