@@ -46,6 +46,12 @@
     <ClInclude Include="src\Lilith\ImGui\ImGuiLayer.h">
       <Filter>Lilith\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lilith\Input.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\KeyCodes.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lilith\Layer.h">
       <Filter>Lilith</Filter>
     </ClInclude>
@@ -55,20 +61,22 @@
     <ClInclude Include="src\Lilith\Log.h">
       <Filter>Lilith</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lilith\MouseButtonCodes.h">
+      <Filter>Lilith</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lilith\Window.h">
       <Filter>Lilith</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\lipch.h" />
-    <ClInclude Include="src\Lilith\Input.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Lilith\KeyCodes.h" />
-    <ClInclude Include="src\Lilith\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Application.cpp">
@@ -89,10 +97,12 @@
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
       <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\lipch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

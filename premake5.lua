@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Lilith/vendor/GLFW/include"
 IncludeDir["Glad"] = "Lilith/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lilith/vendor/ImGui"
+IncludeDir["glm"] = "Lilith/vendor/glm"
 
 group "Dependencies"
 	include "Lilith/vendor/GLFW"
@@ -48,7 +49,8 @@ project "Lilith"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -108,7 +110,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Lilith/vendor/spdlog/include",
-		"Lilith/src"
+		"Lilith/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links
