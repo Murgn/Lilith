@@ -4,6 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Lilith/Renderer/GraphicsContext.h"
+
 namespace Lilith {
 
 	class WindowsWindow : public Window
@@ -28,6 +30,7 @@ namespace Lilith {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
