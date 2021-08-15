@@ -18,6 +18,12 @@ namespace Lilith
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		LI_CORE_ASSERT(status, "Failed to initalize Glad!");
+
+		LI_CORE_INFO
+		(
+			"OpenGL Renderer:\n			  Vendor: {0},\n			  Renderer: {1},\n			  Version: {2}", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION)
+		);
+
 	}
 
 	void OpenGLContext::SwapBuffers()
