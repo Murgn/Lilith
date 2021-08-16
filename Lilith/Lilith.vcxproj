@@ -156,6 +156,7 @@
     <ClInclude Include="src\Lilith\Log.h" />
     <ClInclude Include="src\Lilith\MouseButtonCodes.h" />
     <ClInclude Include="src\Lilith\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Lilith\Renderer\Shader.h" />
     <ClInclude Include="src\Lilith\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="src\Lilith\Layer.cpp" />
     <ClCompile Include="src\Lilith\LayerStack.cpp" />
     <ClCompile Include="src\Lilith\Log.cpp" />
+    <ClCompile Include="src\Lilith\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

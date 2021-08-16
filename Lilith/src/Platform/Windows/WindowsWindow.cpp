@@ -44,7 +44,7 @@ namespace Lilith {
 		if (!s_GLFWInitialized)
 		{
 			// TODO: glfwTerminate on system shutdown
-			int sucess = glfwInit();
+			int success = glfwInit();
 			LI_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
