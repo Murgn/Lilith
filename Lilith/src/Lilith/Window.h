@@ -13,7 +13,7 @@ namespace Lilith {
 		unsigned Width;
 		unsigned Height;
 
-		WindowProps(CONST std::string& title = "Lilith Engine",
+		WindowProps(const std::string& title = "Lilith Engine",
 			unsigned int width = 1280,
 			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
@@ -35,7 +35,7 @@ namespace Lilith {
 		virtual unsigned int GetHeight() const = 0;
 
 		// Window attributes
-		virtual void SetEventCallback(CONST EventCallbackFn& callback) = 0;
+		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
