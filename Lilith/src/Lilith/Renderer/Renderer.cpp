@@ -2,6 +2,19 @@
 #include "Renderer.h"
 
 namespace Lilith {
-	
-	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGl;
+
+	void Renderer::BeginScene()
+	{
+	}
+
+	void Renderer::EndScene()
+	{
+	}
+
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
+	}
+
 }

@@ -11,8 +11,8 @@ namespace Lilith {
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None:		LI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGl:	return new OpenGLVertexArray();
+			case RendererAPI::API::None:		LI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGl:	return new OpenGLVertexArray();
 		}
 
 		LI_CORE_ASSERT(false, "Unknown RendererAPI!");
