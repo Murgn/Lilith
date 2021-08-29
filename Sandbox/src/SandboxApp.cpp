@@ -156,7 +156,9 @@ public:
 
 	void OnImGuiRender() override
 	{
-
+		ImGui::Begin("LILITH ENGINE");
+		ImGui::Text("USE ARROW KEYS TO MOVE, A & D TO ROTATE.");
+		ImGui::End();
 	}
 
 	void OnEvent(Lilith::Event& event) override
