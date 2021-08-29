@@ -9,15 +9,10 @@
 
 #include "Lilith/ImGui/ImGuiLayer.h"
 
-#include "Lilith/Renderer/Shader.h"
-#include "Lilith/Renderer/VertexArray.h"
-#include "Lilith/Renderer/Buffer.h"
-
-#include "Lilith/Renderer/OrthographicCamera.h"
 
 namespace Lilith {
 
-	class LILITH_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -40,14 +35,6 @@ namespace Lilith {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_Shader2;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

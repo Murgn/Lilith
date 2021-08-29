@@ -4,7 +4,7 @@
 
 namespace Lilith {
 
-	class LILITH_API WindowResizeEvent : public Event
+	class WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
@@ -26,7 +26,7 @@ namespace Lilith {
 		unsigned int m_Width, m_Height;
 	};
 
-	class LILITH_API WindowCloseEvent : public Event
+	class WindowCloseEvent : public Event
 	{
 	public:
 		WindowCloseEvent() {}
@@ -35,7 +35,7 @@ namespace Lilith {
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class LILITH_API AppTickEvent : public Event
+	class AppTickEvent : public Event
 	{
 	public:
 		AppTickEvent() {}
@@ -44,7 +44,7 @@ namespace Lilith {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class LILITH_API AppUpdateEvent : public Event
+	class AppUpdateEvent : public Event
 	{
 	public:
 		AppUpdateEvent() {}
@@ -53,7 +53,7 @@ namespace Lilith {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class LILITH_API AppRenderEvent : public Event
+	class AppRenderEvent : public Event
 	{
 	public:
 		AppRenderEvent() {}

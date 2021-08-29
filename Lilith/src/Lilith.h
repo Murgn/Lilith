@@ -12,8 +12,17 @@
 
 #include "Lilith/ImGui/ImGuiLayer.h"
 
+// --- RENDERER -----------------------
+#include "Lilith/Renderer/Renderer.h"
+#include "Lilith/Renderer/RenderCommand.h"
+
+#include "Lilith/Renderer/Buffer.h"
+#include "Lilith/Renderer/Shader.h"
+#include "Lilith/Renderer/VertexArray.h"
+
+#include "Lilith/Renderer/OrthographicCamera.h"
+// ------------------------------------
+
 // --- ENTRY POINT --------------------
-
 #include "Lilith/EntryPoint.h"
-
 // ------------------------------------

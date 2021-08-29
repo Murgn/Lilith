@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace Lilith {
-	class LILITH_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

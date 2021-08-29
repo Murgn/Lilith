@@ -3,9 +3,9 @@
 #ifdef LI_PLATFORM_WINDOWS
 #if LI_DYNAMIC_LINK
 	#ifdef LI_BUILD_DLL
-		#define LILITH_API __declspec(dllexport)
+		#define __declspec(dllexport)
 	#else
-		#define LILITH_API __declspec(dllimport)
+		#define __declspec(dllimport)
 	#endif
 #else
 	#define LILITH_API

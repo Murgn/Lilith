@@ -3,7 +3,7 @@
 #include "Event.h"
 
 namespace Lilith {
-	class LILITH_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -25,7 +25,7 @@ namespace Lilith {
 		float m_MouseX, m_MouseY;
 	};
 
-	class LILITH_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float XOffset, float YOffset)
@@ -47,7 +47,7 @@ namespace Lilith {
 		float m_XOffset, m_YOffset;
 	};
 
-	class LILITH_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -60,7 +60,7 @@ namespace Lilith {
 		int m_Button;
 	};
 
-	class LILITH_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -76,7 +76,7 @@ namespace Lilith {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class LILITH_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

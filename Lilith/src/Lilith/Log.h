@@ -6,7 +6,7 @@
 
 namespace Lilith {
 
-	class LILITH_API Log
+	class Log
 	{
 	public:
 		static void Init();

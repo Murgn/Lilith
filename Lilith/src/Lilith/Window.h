@@ -22,7 +22,7 @@ namespace Lilith {
 	};
 
 	// Interface representing a desktop system based Window
-	class LILITH_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
