@@ -157,6 +157,7 @@
     <ClInclude Include="src\Lilith\MouseButtonCodes.h" />
     <ClInclude Include="src\Lilith\Renderer\Buffer.h" />
     <ClInclude Include="src\Lilith\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Lilith\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Lilith\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Lilith\Renderer\Renderer.h" />
     <ClInclude Include="src\Lilith\Renderer\RendererAPI.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="src\Lilith\LayerStack.cpp" />
     <ClCompile Include="src\Lilith\Log.cpp" />
     <ClCompile Include="src\Lilith\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Lilith\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Lilith\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Lilith\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Lilith\Renderer\RendererAPI.cpp" />

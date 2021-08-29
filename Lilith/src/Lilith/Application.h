@@ -13,6 +13,8 @@
 #include "Lilith/Renderer/VertexArray.h"
 #include "Lilith/Renderer/Buffer.h"
 
+#include "Lilith/Renderer/OrthographicCamera.h"
+
 namespace Lilith {
 
 	class LILITH_API Application
@@ -44,6 +46,8 @@ namespace Lilith {
 
 		std::shared_ptr<Shader> m_Shader2;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
