@@ -1,8 +1,12 @@
 #include <Lilith.h>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 
 class ExampleLayer : public Lilith::Layer
 {
@@ -19,7 +23,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<Lilith::VertexBuffer> vertexBuffer;
+		Lilith::Ref<Lilith::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Lilith::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Lilith::BufferLayout layout = {
 			{Lilith::ShaderDataType::Float3, "a_Position"},
@@ -29,7 +33,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Lilith::IndexBuffer> indexBuffer;
+		Lilith::Ref<Lilith::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Lilith::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -43,7 +47,7 @@ public:
 
 		};
 
-		std::shared_ptr<Lilith::VertexBuffer> squareVB;
+		Lilith::Ref<Lilith::VertexBuffer> squareVB;
 		squareVB.reset(Lilith::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{Lilith::ShaderDataType::Float3, "a_Position"},
@@ -51,11 +55,11 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Lilith::IndexBuffer> squareIB;
+		Lilith::Ref<Lilith::IndexBuffer> squareIB;
 		squareIB.reset(Lilith::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		std::string vertexSource = R"(
+		std::string defaultShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -75,7 +79,7 @@ public:
 			}
 		)";
 
-		std::string fragmentSource = R"(
+		std::string defaultShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
@@ -90,9 +94,9 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new Lilith::Shader(vertexSource, fragmentSource));
+		m_DefaultShader.reset(Lilith::Shader::Create(defaultShaderVertexSrc, defaultShaderFragmentSrc));
 
-		std::string vertexSource2 = R"(
+		std::string colorShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -109,21 +113,22 @@ public:
 			}
 		)";
 
-		std::string fragmentSource2 = R"(
+		std::string colorShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
-			in vec4 v_Color;
+
+			uniform vec3 u_Color;
 		
 			void main()
 			{
-				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 
-		m_Shader2.reset(new Lilith::Shader(vertexSource2, fragmentSource2));
+		m_ColorShader.reset(Lilith::Shader::Create(colorShaderVertexSrc, colorShaderFragmentSrc));
 	}
 
 	void OnUpdate(Lilith::DeltaTime deltaTime) override
@@ -156,18 +161,21 @@ public:
 		{
 			static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-			for (int x = -5; x < 6; x++)
+			std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_ColorShader)->Bind();
+			std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_ColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+			for (int x = -7; x < 8; x++)
 			{
-				for (int y = -5; y < 6; y++)
+				for (int y = -7; y < 8; y++)
 				{
 					glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 					glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-					Lilith::Renderer::Submit(m_Shader2, m_SquareVA, transform);
+					Lilith::Renderer::Submit(m_ColorShader, m_SquareVA, transform);
 				}
 
 			}
 
-			Lilith::Renderer::Submit(m_Shader, m_VertexArray);
+			//Lilith::Renderer::Submit(m_DefaultShader, m_VertexArray);
 		}
 
 		Lilith::Renderer::EndScene();
@@ -177,6 +185,8 @@ public:
 	{
 		ImGui::Begin("LILITH ENGINE");
 		ImGui::Text("USE ARROW KEYS TO MOVE CAMERA, A & D TO ROTATE CAMERA.");
+		ImGui::Separator();
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
 		ImGui::End();
 	}
 
@@ -193,11 +203,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Lilith::Shader> m_Shader;
-	std::shared_ptr<Lilith::VertexArray> m_VertexArray;
-
-	std::shared_ptr<Lilith::Shader> m_Shader2;
-	std::shared_ptr<Lilith::VertexArray> m_SquareVA;
+	Lilith::Ref<Lilith::Shader> m_DefaultShader;
+	Lilith::Ref<Lilith::VertexArray> m_VertexArray;
+	
+	Lilith::Ref<Lilith::Shader> m_ColorShader;
+	Lilith::Ref<Lilith::VertexArray> m_SquareVA;
 
 	Lilith::OrthographicCamera m_Camera;
 
@@ -208,6 +218,8 @@ private:
 	float m_CameraRotationSpeed = 180.0f;
 
 	glm::vec3 m_SquarePosition;
+
+	glm::vec3 m_SquareColor = { 0.2f, 0.5f, 1.0f };
 };
 
 class Sandbox : public Lilith::Application
