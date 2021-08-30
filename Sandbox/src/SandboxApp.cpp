@@ -6,7 +6,7 @@ class ExampleLayer : public Lilith::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 	{
 		m_VertexArray.reset(Lilith::VertexArray::Create());
 
@@ -122,25 +122,25 @@ public:
 		m_Shader2.reset(new Lilith::Shader(vertexSource2, fragmentSource2));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Lilith::DeltaTime deltaTime) override
 	{
 
 		if (Lilith::Input::IsKeyPressed(LI_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * deltaTime;
 		if (Lilith::Input::IsKeyPressed(LI_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * deltaTime;
 		if (Lilith::Input::IsKeyPressed(LI_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * deltaTime;
 		if (Lilith::Input::IsKeyPressed(LI_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * deltaTime;
 
 
 		if (Lilith::Input::IsKeyPressed(LI_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * deltaTime;
 		if (Lilith::Input::IsKeyPressed(LI_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * deltaTime;
 
-		Lilith::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.11f, 1 });
+		Lilith::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.11f, 1.0f });
 		Lilith::RenderCommand::Clear();
 
 		m_Camera.SetPosition(m_CameraPosition);
@@ -170,7 +170,7 @@ public:
 	bool OnKeyPressedEvent(Lilith::KeyPressedEvent& event)
 	{
 		LI_INFO("Key Pressed");
-		return false;
+		return 0;
 	}
 
 private:
@@ -183,10 +183,10 @@ private:
 	Lilith::OrthographicCamera m_Camera;
 
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.05f;
+	float m_CameraMoveSpeed = 2.0f;
 
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 2.5f;
+	float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public Lilith::Application

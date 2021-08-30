@@ -6,6 +6,8 @@
 #include "Lilith/Layer.h"
 #include "Lilith/Log.h"
 
+#include "Lilith/Core/DeltaTime.h"
+
 #include "Lilith/Input.h"
 #include "Lilith/KeyCodes.h"
 #include "Lilith/MouseButtonCodes.h"

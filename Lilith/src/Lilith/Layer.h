@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Lilith/Core.h"
+#include "Lilith/Core/DeltaTime.h"
 #include "Lilith/Events/Event.h"
+
 
 namespace Lilith {
 
@@ -13,7 +15,7 @@ namespace Lilith {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(DeltaTime deltaTime) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

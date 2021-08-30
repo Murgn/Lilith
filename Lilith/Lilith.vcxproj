@@ -143,6 +143,7 @@
     <ClInclude Include="src\Lilith.h" />
     <ClInclude Include="src\Lilith\Application.h" />
     <ClInclude Include="src\Lilith\Core.h" />
+    <ClInclude Include="src\Lilith\Core\DeltaTime.h" />
     <ClInclude Include="src\Lilith\EntryPoint.h" />
     <ClInclude Include="src\Lilith\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Lilith\Events\Event.h" />

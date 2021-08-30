@@ -83,6 +83,7 @@
     <ClInclude Include="src\Lilith\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Lilith\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Lilith\Core\DeltaTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Application.cpp">

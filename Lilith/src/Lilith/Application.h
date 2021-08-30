@@ -7,6 +7,8 @@
 #include "Lilith/Events/Event.h"
 #include "Lilith/Events/ApplicationEvent.h"
 
+#include "Lilith/Core/DeltaTime.h"
+
 #include "Lilith/ImGui/ImGuiLayer.h"
 
 
@@ -30,11 +32,12 @@ namespace Lilith {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
