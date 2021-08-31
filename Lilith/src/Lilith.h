@@ -20,6 +20,7 @@
 
 #include "Lilith/Renderer/Buffer.h"
 #include "Lilith/Renderer/Shader.h"
+#include "Lilith/Renderer/Texture.h"
 #include "Lilith/Renderer/VertexArray.h"
 
 #include "Lilith/Renderer/OrthographicCamera.h"

@@ -39,11 +39,11 @@ public:
 
 		m_SquareVA.reset(Lilith::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 
 		};
 
@@ -51,7 +51,8 @@ public:
 		squareVB.reset(Lilith::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{Lilith::ShaderDataType::Float3, "a_Position"},
-			});
+			{Lilith::ShaderDataType::Float2, "a_TexCoord"}
+		});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
@@ -104,11 +105,9 @@ public:
 			uniform mat4 u_ViewProjection;
 			uniform mat4 u_Transform;
 
-			out vec3 v_Position;
 
 			void main()
 			{
-				v_Position = a_Position;
 				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
@@ -117,8 +116,6 @@ public:
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
-
-			in vec3 v_Position;
 
 			uniform vec3 u_Color;
 		
@@ -129,6 +126,46 @@ public:
 		)";
 
 		m_ColorShader.reset(Lilith::Shader::Create(colorShaderVertexSrc, colorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+		
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Lilith::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Lilith::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Lilith::DeltaTime deltaTime) override
@@ -159,7 +196,7 @@ public:
 		Lilith::Renderer::BeginScene(m_Camera);
 
 		{
-			static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+			/*static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
 			std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_ColorShader)->Bind();
 			std::dynamic_pointer_cast<Lilith::OpenGLShader>(m_ColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
@@ -173,9 +210,13 @@ public:
 					Lilith::Renderer::Submit(m_ColorShader, m_SquareVA, transform);
 				}
 
-			}
+			}*/
 
-			//Lilith::Renderer::Submit(m_DefaultShader, m_VertexArray);
+			m_Texture->Bind();
+			Lilith::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+			// Triangle
+			// Lilith::Renderer::Submit(m_DefaultShader, m_VertexArray);
 		}
 
 		Lilith::Renderer::EndScene();
@@ -185,8 +226,8 @@ public:
 	{
 		ImGui::Begin("LILITH ENGINE");
 		ImGui::Text("USE ARROW KEYS TO MOVE CAMERA, A & D TO ROTATE CAMERA.");
-		ImGui::Separator();
-		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		//ImGui::Separator();
+		//ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
 		ImGui::End();
 	}
 
@@ -206,8 +247,10 @@ private:
 	Lilith::Ref<Lilith::Shader> m_DefaultShader;
 	Lilith::Ref<Lilith::VertexArray> m_VertexArray;
 	
-	Lilith::Ref<Lilith::Shader> m_ColorShader;
+	Lilith::Ref<Lilith::Shader> m_ColorShader, m_TextureShader;
 	Lilith::Ref<Lilith::VertexArray> m_SquareVA;
+
+	Lilith::Ref<Lilith::Texture2D> m_Texture;
 
 	Lilith::OrthographicCamera m_Camera;
 

@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Lilith/vendor/GLFW/include"
 IncludeDir["Glad"] = "Lilith/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lilith/vendor/ImGui"
 IncludeDir["glm"] = "Lilith/vendor/glm"
+IncludeDir["stb_image"] = "Lilith/vendor/stb_image"
 
 group "Dependencies"
 	include "Lilith/vendor/GLFW"
@@ -41,7 +42,11 @@ project "Lilith"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	defines
@@ -56,7 +61,8 @@ project "Lilith"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links
