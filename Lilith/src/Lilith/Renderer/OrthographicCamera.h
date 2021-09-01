@@ -9,6 +9,8 @@ namespace Lilith {
 	public:
 		OrthographicCamera(float left, float right, float bottom, float top, float zNear = 1.0, float zFar = -1.0);
 
+		void SetProjection(float left, float right, float bottom, float top, float zNear = 1.0, float zFar = -1.0);
+
 		const glm::vec3& GetPosition() const { return m_Position; }
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
 

@@ -12,6 +12,12 @@ namespace Lilith {
 		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
 	}
 
+	void OrthographicCamera::SetProjection(float left, float right, float bottom, float top, float zNear /*= 1.0*/, float zFar /*= 1.0*/)
+	{
+		m_ProjectionMatrix = glm::ortho(left, right, bottom, top, zNear, zFar);
+		m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
+	}
+
 	void OrthographicCamera::RecalculateViewMatrix()
 	{
 		glm::mat4 transform =

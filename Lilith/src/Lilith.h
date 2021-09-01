@@ -11,6 +11,7 @@
 #include "Lilith/Input.h"
 #include "Lilith/KeyCodes.h"
 #include "Lilith/MouseButtonCodes.h"
+#include "Lilith/OrthographicCameraController.h"
 
 #include "Lilith/ImGui/ImGuiLayer.h"
 

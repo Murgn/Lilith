@@ -11,7 +11,7 @@ class ExampleLayer : public Lilith::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{
 		m_VertexArray.reset(Lilith::VertexArray::Create());
 
@@ -72,30 +72,16 @@ public:
 
 	void OnUpdate(Lilith::DeltaTime deltaTime) override
 	{
+		// Update
+		m_CameraController.OnUpdate(deltaTime);
 
-		// Camera Movement ------------------------------------------------
-		if (Lilith::Input::IsKeyPressed(LI_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * deltaTime;
-		if (Lilith::Input::IsKeyPressed(LI_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * deltaTime;
-		if (Lilith::Input::IsKeyPressed(LI_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * deltaTime;
-		if (Lilith::Input::IsKeyPressed(LI_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * deltaTime;
-
-		// Camera Rotation ------------------------------------------------
-		if (Lilith::Input::IsKeyPressed(LI_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * deltaTime;
-		if (Lilith::Input::IsKeyPressed(LI_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * deltaTime;
-
+		// Render 
 		Lilith::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.11f, 1.0f });
 		Lilith::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Lilith::Renderer::BeginScene(m_Camera);
+		Lilith::Renderer::BeginScene(m_CameraController.GetCamera());
+		//Lilith::Renderer2D:BeginScene(m_Camera);
+		//Lilith::Renderer2D::DrawQuad();
 
 		{
 			auto defaultShader = m_ShaderLibrary.Get("Default");
@@ -133,16 +119,9 @@ public:
 		ImGui::End();
 	}
 
-	void OnEvent(Lilith::Event& event) override
+	void OnEvent(Lilith::Event& e) override
 	{
-		Lilith::EventDispatcher dispatcher(event);
-		dispatcher.Dispatch<Lilith::KeyPressedEvent>(LI_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
-	}
-
-	bool OnKeyPressedEvent(Lilith::KeyPressedEvent& event)
-	{
-		//LI_INFO("Key Pressed");
-		return 0;
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -153,15 +132,7 @@ private:
 
 	Lilith::Ref<Lilith::Texture2D> m_CheckerboardTexture, m_LilithLogoTexture;
 
-	Lilith::OrthographicCamera m_Camera;
-
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 2.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
-
-	glm::vec3 m_SquarePosition;
+	Lilith::OrthographicCameraController m_CameraController;
 
 	glm::vec3 m_SquareColor = { 0.2f, 0.5f, 1.0f };
 };
