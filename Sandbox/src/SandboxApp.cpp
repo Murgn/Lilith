@@ -112,16 +112,26 @@ public:
 
 	void OnImGuiRender() override
 	{
-		ImGui::Begin("LILITH ENGINE");
+		/*ImGui::Begin("LILITH ENGINE");
 		ImGui::Text("USE ARROW KEYS TO MOVE CAMERA, A & D TO ROTATE CAMERA.");
 		ImGui::Separator();
 		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
-		ImGui::End();
+		ImGui::End();*/
 	}
 
 	void OnEvent(Lilith::Event& e) override
 	{
 		m_CameraController.OnEvent(e);
+
+		if (e.GetEventType() == Lilith::EventType::WindowResize)
+		{
+			auto& re = (Lilith::WindowResizeEvent&)e;
+
+			//float zoom = (float)re.GetWidth() / 1280.0f;
+			//
+			//m_CameraController.SetZoomLevel(zoom);
+
+		}
 	}
 
 private:

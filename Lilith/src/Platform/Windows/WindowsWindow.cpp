@@ -67,6 +67,7 @@ namespace Lilith {
 			data.Height = height;
 
 			WindowResizeEvent event(width, height);
+			LI_CORE_INFO("Window resized to: {0} x {1}", width, height);
 			data.EventCallback(event);
 		});
 
