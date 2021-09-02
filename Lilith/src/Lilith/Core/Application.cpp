@@ -1,7 +1,7 @@
 #include "lipch.h"
 #include "Application.h"
 
-#include "Lilith/Log.h"
+#include "Lilith/Core/Log.h"
 
 #include "Lilith/Renderer/Renderer.h"
 

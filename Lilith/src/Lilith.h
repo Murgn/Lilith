@@ -2,16 +2,16 @@
 
 // For use by Lilith applications
 
-#include "Lilith/Application.h"
-#include "Lilith/Layer.h"
-#include "Lilith/Log.h"
+#include "Lilith/Core/Application.h"
+#include "Lilith/Core/Layer.h"
+#include "Lilith/Core/Log.h"
 
 #include "Lilith/Core/DeltaTime.h"
 
-#include "Lilith/Input.h"
-#include "Lilith/KeyCodes.h"
-#include "Lilith/MouseButtonCodes.h"
-#include "Lilith/OrthographicCameraController.h"
+#include "Lilith/Core/Input.h"
+#include "Lilith/Core/KeyCodes.h"
+#include "Lilith/Core/MouseButtonCodes.h"
+#include "Lilith/Renderer/OrthographicCameraController.h"
 
 #include "Lilith/ImGui/ImGuiLayer.h"
 
@@ -28,5 +28,5 @@
 // ------------------------------------
 
 // --- ENTRY POINT --------------------
-#include "Lilith/EntryPoint.h"
+#include "Lilith/Core/EntryPoint.h"
 // ------------------------------------

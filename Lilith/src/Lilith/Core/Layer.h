@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lilith/Core.h"
+#include "Lilith/Core/Core.h"
 #include "Lilith/Core/DeltaTime.h"
 #include "Lilith/Events/Event.h"
 

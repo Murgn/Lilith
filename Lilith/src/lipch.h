@@ -1,6 +1,6 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS
+//#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <memory>
 #include <utility>
@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Lilith/Log.h"
+#include "Lilith/Core/Log.h"
 
 #ifdef LI_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -1,5 +1,5 @@
 #pragma once
-#include "Lilith/Core.h"
+#include "Lilith/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

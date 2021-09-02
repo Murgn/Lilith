@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lilith/Input.h"
+#include "Lilith/Core/Input.h"
 
 namespace Lilith {
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "lipch.h"
-#include "Lilith\Core.h"
+#include "Lilith/Core/Core.h"
 
 namespace Lilith {
 

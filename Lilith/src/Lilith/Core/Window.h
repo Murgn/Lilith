@@ -2,7 +2,7 @@
 
 #include "lipch.h"
 
-#include "Lilith/Core.h"
+#include "Lilith/Core/Core.h"
 #include "Lilith/Events/Event.h"
 
 namespace Lilith {

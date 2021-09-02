@@ -1,8 +1,8 @@
 #include "lipch.h"
 #include "OrthographicCameraController.h"
 
-#include "Lilith/Input.h"
-#include "Lilith/KeyCodes.h"
+#include "Lilith/Core/Input.h"
+#include "Lilith/Core/KeyCodes.h"
 
 namespace Lilith {
 
@@ -35,7 +35,7 @@ namespace Lilith {
 		}
 
 		m_Camera.SetPosition(m_CameraPosition);
-		m_CameraMoveSpeed = m_ZoomLevel / 0.5;
+		m_CameraMoveSpeed = m_ZoomLevel / 0.5f;
 	}
 
 	void OrthographicCameraController::OnEvent(Event& e)

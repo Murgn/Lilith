@@ -59,9 +59,11 @@ public:
 		squareIB.reset(Lilith::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		m_ShaderLibrary.Load("assets/shaders/Default.glsl");
-		m_ShaderLibrary.Load("assets/shaders/Color.glsl");
-		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+		/* visual studio shouts at me if i dont give the shaders references :(
+		you dont need references though, visual will just be mean if you dont use them */
+		Lilith::Ref<Lilith::Shader> defaultShader = m_ShaderLibrary.Load("assets/shaders/Default.glsl");
+		Lilith::Ref<Lilith::Shader> colorShader = m_ShaderLibrary.Load("assets/shaders/Color.glsl");
+		Lilith::Ref<Lilith::Shader> textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_CheckerboardTexture = Lilith::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LilithLogoTexture = Lilith::Texture2D::Create("assets/textures/Lilith Logo.png");

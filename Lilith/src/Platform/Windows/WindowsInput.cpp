@@ -1,7 +1,7 @@
 #include "lipch.h"
 #include "WindowsInput.h"
 
-#include "Lilith/Application.h"
+#include "Lilith/Core/Application.h"
 #include <GLFW//glfw3.h>
 
 namespace Lilith {
