@@ -17,6 +17,7 @@
 
 // --- RENDERER -----------------------
 #include "Lilith/Renderer/Renderer.h"
+#include "Lilith/Renderer/Renderer2D.h"
 #include "Lilith/Renderer/RenderCommand.h"
 
 #include "Lilith/Renderer/Buffer.h"
@@ -25,8 +26,4 @@
 #include "Lilith/Renderer/VertexArray.h"
 
 #include "Lilith/Renderer/OrthographicCamera.h"
-// ------------------------------------
-
-// --- ENTRY POINT --------------------
-#include "Lilith/Core/EntryPoint.h"
 // ------------------------------------

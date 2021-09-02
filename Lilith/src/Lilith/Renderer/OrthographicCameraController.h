@@ -22,6 +22,7 @@ namespace Lilith {
 		float GetZoomLevel() { return m_ZoomLevel; }
 		void SetZoomLevel(float level) { m_ZoomLevel = level; }
 	private:
+		void ResetRotation() { m_CameraRotation = 0; }
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResized(WindowResizeEvent& e); 
 	private:

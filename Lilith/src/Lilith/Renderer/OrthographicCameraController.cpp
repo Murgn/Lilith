@@ -15,13 +15,25 @@ namespace Lilith {
 	{
 		// Camera Movement ------------------------------------------------
 		if (Input::IsKeyPressed(LI_KEY_W))
-			m_CameraPosition.y += m_CameraMoveSpeed * deltaTime;
+		{
+			m_CameraPosition.x += -sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+			m_CameraPosition.y +=  cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+		}
 		if (Input::IsKeyPressed(LI_KEY_A))
-			m_CameraPosition.x -= m_CameraMoveSpeed * deltaTime;
+		{
+			m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+			m_CameraPosition.y -= sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+		}
 		if (Input::IsKeyPressed(LI_KEY_S))
-			m_CameraPosition.y -= m_CameraMoveSpeed * deltaTime;
+		{
+			m_CameraPosition.x -= -sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+			m_CameraPosition.y -=  cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+		}
 		if (Input::IsKeyPressed(LI_KEY_D))
-			m_CameraPosition.x += m_CameraMoveSpeed * deltaTime;
+		{
+			m_CameraPosition.x += cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+			m_CameraPosition.y += sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * deltaTime;
+		}
 
 		// Camera Rotation ------------------------------------------------
 		if (m_Rotation)
@@ -31,7 +43,18 @@ namespace Lilith {
 			if (Input::IsKeyPressed(LI_KEY_E))
 				m_CameraRotation -= m_CameraRotationSpeed * deltaTime;
 
+			if (m_CameraRotation > 180.0f)
+				m_CameraRotation -= 360.0f;
+			else if (m_CameraRotation <= -180.0f)
+				m_CameraRotation += 360.0f;
+
 			m_Camera.SetRotation(m_CameraRotation);
+		}
+
+		if (Input::IsKeyPressed(LI_KEY_0))
+		{
+			ResetRotation();
+			m_CameraPosition = { 0.0f, 0.0f, 0.0f };
 		}
 
 		m_Camera.SetPosition(m_CameraPosition);

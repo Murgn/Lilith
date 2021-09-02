@@ -12,7 +12,7 @@ namespace Lilith {
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:		LI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGl:	return std::make_shared<OpenGLShader>(filepath);
+			case RendererAPI::API::OpenGl:	return CreateRef<OpenGLShader>(filepath);
 		}
 
 		LI_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -24,7 +24,7 @@ namespace Lilith {
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:		LI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGl:	return std::make_shared<OpenGLShader>(name, vertexSource, fragmentSource);
+		case RendererAPI::API::OpenGl:	return CreateRef<OpenGLShader>(name, vertexSource, fragmentSource);
 		}
 
 		LI_CORE_ASSERT(false, "Unknown RendererAPI!");

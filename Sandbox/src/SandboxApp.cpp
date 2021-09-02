@@ -1,4 +1,5 @@
 #include <Lilith.h>
+#include <Lilith/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -7,13 +8,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Lilith::Layer
 {
 public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{
-		m_VertexArray.reset(Lilith::VertexArray::Create());
+		m_VertexArray = Lilith::VertexArray::Create();
 
 		// Positions
 		float vertices[3 * 7] = {
@@ -36,7 +39,7 @@ public:
 		indexBuffer.reset(Lilith::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Lilith::VertexArray::Create());
+		m_SquareVA = Lilith::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -82,13 +85,10 @@ public:
 		Lilith::RenderCommand::Clear();
 
 		Lilith::Renderer::BeginScene(m_CameraController.GetCamera());
-		//Lilith::Renderer2D:BeginScene(m_Camera);
-		//Lilith::Renderer2D::DrawQuad();
-
 		{
-			auto defaultShader = m_ShaderLibrary.Get("Default");
-			auto colorShader = m_ShaderLibrary.Get("Color");
-			auto textureShader = m_ShaderLibrary.Get("Texture");
+			Lilith::Ref<Lilith::Shader> defaultShader = m_ShaderLibrary.Get("Default");
+			Lilith::Ref<Lilith::Shader> colorShader = m_ShaderLibrary.Get("Color");
+			Lilith::Ref<Lilith::Shader> textureShader = m_ShaderLibrary.Get("Texture");
 
 			m_CheckerboardTexture->Bind();
 			Lilith::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
@@ -108,7 +108,6 @@ public:
 			// Triangle
 			// Lilith::Renderer::Submit(m_DefaultShader, m_VertexArray);
 		}
-
 		Lilith::Renderer::EndScene();
 	}
 
@@ -124,16 +123,6 @@ public:
 	void OnEvent(Lilith::Event& e) override
 	{
 		m_CameraController.OnEvent(e);
-
-		if (e.GetEventType() == Lilith::EventType::WindowResize)
-		{
-			auto& re = (Lilith::WindowResizeEvent&)e;
-
-			//float zoom = (float)re.GetWidth() / 1280.0f;
-			//
-			//m_CameraController.SetZoomLevel(zoom);
-
-		}
 	}
 
 private:
@@ -154,7 +143,8 @@ class Sandbox : public Lilith::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
