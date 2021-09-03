@@ -66,6 +66,9 @@
     <ClInclude Include="src\Lilith\Core\DeltaTime.h">
       <Filter>src\Lilith\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lilith\Core\DiscordRPC.h">
+      <Filter>src\Lilith\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lilith\Core\EntryPoint.h">
       <Filter>src\Lilith\Core</Filter>
     </ClInclude>
@@ -121,6 +124,9 @@
       <Filter>src\Lilith\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lilith\Renderer\Renderer.h">
+      <Filter>src\Lilith\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Renderer\Renderer2D.h">
       <Filter>src\Lilith\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lilith\Renderer\RendererAPI.h">
@@ -1410,10 +1416,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lilith\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Core\Application.cpp">
+      <Filter>src\Lilith\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lilith\Core\DiscordRPC.cpp">
       <Filter>src\Lilith\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Lilith\Core\Layer.cpp">
@@ -1444,6 +1452,9 @@
       <Filter>src\Lilith\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lilith\Renderer\Renderer.cpp">
+      <Filter>src\Lilith\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lilith\Renderer\Renderer2D.cpp">
       <Filter>src\Lilith\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lilith\Renderer\RendererAPI.cpp">
@@ -1488,6 +1499,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lilith\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

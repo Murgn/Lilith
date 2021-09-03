@@ -15,6 +15,8 @@
 
 #include "Lilith/ImGui/ImGuiLayer.h"
 
+//#include "Lilith/Core/DiscordRPC.h"
+
 // --- RENDERER -----------------------
 #include "Lilith/Renderer/Renderer.h"
 #include "Lilith/Renderer/Renderer2D.h"

@@ -18,11 +18,14 @@ IncludeDir["Glad"] = "Lilith/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lilith/vendor/ImGui"
 IncludeDir["glm"] = "Lilith/vendor/glm"
 IncludeDir["stb_image"] = "Lilith/vendor/stb_image"
+--IncludeDir["Discord"] = "Lilith/vendor/Discord"
+
 
 group "Dependencies"
 	include "Lilith/vendor/GLFW"
 	include "Lilith/vendor/Glad"
 	include "Lilith/vendor/ImGui"
+	--include "Lilith/vendor/Discord"
 
 group ""
 
@@ -46,7 +49,10 @@ project "Lilith"
 		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
+		--"%{prj.name}/vendor/Discord/**.h",
+		--"%{prj.name}/vendor/Discord/include/**.dll",
+		--"%{prj.name}/vendor/Discord/include/**.dll.lib",
 	}
 
 	defines
@@ -62,7 +68,9 @@ project "Lilith"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		--"%{IncludeDir.Discord}",
+		--"%{IncludeDir.Discord}/include"
 	}
 
 	links
@@ -70,7 +78,8 @@ project "Lilith"
 		"GLFW",
 		"Glad",
 		"ImGui",
-		"opengl32.lib"
+		"opengl32.lib",
+		--"discord_game_sdk.dll.lib"
 	}
 
 	filter "system:windows"

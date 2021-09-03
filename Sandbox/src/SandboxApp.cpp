@@ -145,6 +145,7 @@ public:
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
+		//new Lilith::DiscordRPC();
 	}
 
 	~Sandbox()

@@ -144,6 +144,7 @@
     <ClInclude Include="src\Lilith\Core\Application.h" />
     <ClInclude Include="src\Lilith\Core\Core.h" />
     <ClInclude Include="src\Lilith\Core\DeltaTime.h" />
+    <ClInclude Include="src\Lilith\Core\DiscordRPC.h" />
     <ClInclude Include="src\Lilith\Core\EntryPoint.h" />
     <ClInclude Include="src\Lilith\Core\Input.h" />
     <ClInclude Include="src\Lilith\Core\KeyCodes.h" />
@@ -596,6 +597,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Core\Application.cpp" />
+    <ClCompile Include="src\Lilith\Core\DiscordRPC.cpp" />
     <ClCompile Include="src\Lilith\Core\Layer.cpp" />
     <ClCompile Include="src\Lilith\Core\LayerStack.cpp" />
     <ClCompile Include="src\Lilith\Core\Log.cpp" />
