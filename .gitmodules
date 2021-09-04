@@ -4,9 +4,9 @@
 [submodule "Lilith/vendor/glm"]
 	path = Lilith/vendor/glm
 	url = https://github.com/g-truc/glm
-[submodule "Lilith/vendor/GLFW"]
-	path = Lilith/vendor/GLFW
-	url = https://github.com/Murgn/glfw
 [submodule "Lilith/vendor/ImGui"]
 	path = Lilith/vendor/ImGui
 	url = https://github.com/Murgn/imgui
+[submodule "Lilith/vendor/GLFW"]
+	path = Lilith/vendor/GLFW
+	url = https://github.com/Murgn/glfw
