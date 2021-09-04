@@ -10,6 +10,9 @@
     <Filter Include="src\Lilith\Core">
       <UniqueIdentifier>{3A7B1426-A606-82EA-AF17-05DF1B22DEEA}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Lilith\Debug">
+      <UniqueIdentifier>{983DB0E8-8436-CF3A-AD68-B4BF99C0AE46}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Lilith\Events">
       <UniqueIdentifier>{46434202-B259-4098-FBD0-CBB967261120}</UniqueIdentifier>
     </Filter>
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="src\Lilith\Core\Window.h">
       <Filter>src\Lilith\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lilith\Debug\Instrumentor.h">
+      <Filter>src\Lilith\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Lilith\Events\ApplicationEvent.h">
       <Filter>src\Lilith\Events</Filter>
@@ -1416,7 +1422,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lilith\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lilith\Core\Application.cpp">
