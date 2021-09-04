@@ -153,6 +153,7 @@
     <ClInclude Include="src\Lilith\Core\Log.h" />
     <ClInclude Include="src\Lilith\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Lilith\Core\Window.h" />
+    <ClInclude Include="src\Lilith\Debug\Instrumentor.h" />
     <ClInclude Include="src\Lilith\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Lilith\Events\Event.h" />
     <ClInclude Include="src\Lilith\Events\KeyEvent.h" />

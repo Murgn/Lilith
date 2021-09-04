@@ -20,6 +20,8 @@ namespace Lilith {
 
 	void Renderer2D::Init()
 	{
+		LI_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DStorage;
 		s_Data->VertexArray = VertexArray::Create();
 
@@ -55,17 +57,22 @@ namespace Lilith {
 
 	void Renderer2D::Shutdown()
 	{
+		LI_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		LI_PROFILE_FUNCTION();
+
 		s_Data->Shader->Bind();
 		s_Data->Shader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
 	{
+		LI_PROFILE_FUNCTION();
 
 	}
 
@@ -76,10 +83,14 @@ namespace Lilith {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec3& rotation, const glm::vec2& size, const glm::vec4 color)
 	{
+		LI_PROFILE_FUNCTION();
+
 		s_Data->Shader->SetFloat4("u_Color", color);
 		s_Data->WhiteTexture->Bind();
 
-		glm::mat4 transform =
+		glm::mat4 transform = glm::mat4(1.0f);
+
+		transform =
 			glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), { 1.0f, 0.0f, 0.0f }) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), { 0.0f, 1.0f, 0.0f }) *
@@ -98,10 +109,14 @@ namespace Lilith {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec3& rotation, const glm::vec2& size, const Ref<Texture2D>& texture)
 	{
+		LI_PROFILE_FUNCTION();
+
 		s_Data->Shader->SetFloat4("u_Color", glm::vec4(1.0f));
 		texture->Bind();
 
-		glm::mat4 transform =
+		glm::mat4 transform = glm::mat4(1.0f);
+
+		transform =
 			glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), { 1.0f, 0.0f, 0.0f }) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), { 0.0f, 1.0f, 0.0f }) *
@@ -121,10 +136,14 @@ namespace Lilith {
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec3& rotation, const glm::vec2& size, const glm::vec4 color, const Ref<Texture2D>& texture)
 	{
+		LI_PROFILE_FUNCTION();
+
 		s_Data->Shader->SetFloat4("u_Color", color);
 		texture->Bind();
 
-		glm::mat4 transform =
+		glm::mat4 transform = glm::mat4(1.0f);
+
+		transform =
 			glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.x), { 1.0f, 0.0f, 0.0f }) *
 			glm::rotate(glm::mat4(1.0f), glm::radians(rotation.y), { 0.0f, 1.0f, 0.0f }) *

@@ -16,6 +16,8 @@
 
 #include "Lilith/Core/Log.h"
 
+#include "Lilith/Debug/Instrumentor.h"
+
 #ifdef LI_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

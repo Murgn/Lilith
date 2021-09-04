@@ -13,6 +13,8 @@ namespace Lilith {
 
 	void OrthographicCameraController::OnUpdate(DeltaTime deltaTime)
 	{
+		LI_PROFILE_FUNCTION();
+
 		// Camera Movement ------------------------------------------------
 		if (Input::IsKeyPressed(LI_KEY_W))
 		{
@@ -63,6 +65,8 @@ namespace Lilith {
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		LI_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(LI_BIND_EVENT_FN(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(LI_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
@@ -70,6 +74,8 @@ namespace Lilith {
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e)
 	{
+		LI_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -78,6 +84,8 @@ namespace Lilith {
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		LI_PROFILE_FUNCTION();
+
 		m_AspectRatio  = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

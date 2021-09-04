@@ -10,6 +10,8 @@ namespace Lilith {
 
 	void Renderer::Init()
 	{
+		LI_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}
